@@ -20,14 +20,26 @@ EmberTest.EmberTestController = Ember.ArrayController.extend({
 			//title = title.trim();
 			
 			var book = this.store.createRecord('book', {
-				title: title,
-				author: author,
+				title:    title,
+				author:   author,
+				checkbox: false,
 			})
 			
 			this.set('newTitle', '');
 			this.set('newAuthor', '');
 			
 			book.save();
-		}
+		},
+		isChecked: function(key, value){
+			var model = this.get('model');
+			
+			if(value === undefined){
+				return model.get('checkbox');
+			} else {
+				model.set('checkbox', value);
+				model.save();
+				return value;
+			}
+		}.property('model.checkbox')
 	}
 })

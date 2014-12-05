@@ -11,7 +11,7 @@
 	<section id="my-section">
 		<ul>
 			{{#each book in model}}
-				<li>{{book.author}} "{{book.title}}"</li>
+				<li>{{input type="checkbox" checked=todo.isChecked}} {{book.author}} "{{book.title}}"</li>
 			{{/each}}
 			<li>
 				{{input id="new-author" type="text" placeholder="autor" value=newAuthor}}
