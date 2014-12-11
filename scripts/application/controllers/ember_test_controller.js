@@ -30,6 +30,7 @@ EmberTest.EmberTestController = Ember.ArrayController.extend({
 			
 			book.save();
 		},
+		/*
 		isChecked: function(key, value){
 			var model = this.get('model');
 			
@@ -40,6 +41,16 @@ EmberTest.EmberTestController = Ember.ArrayController.extend({
 				model.save();
 				return value;
 			}
-		}.property('model.checkbox')
-	}
+		}.property('model.checkbox'),
+		*/
+		
+	},
+	
+	remaining: function(){
+		return this.filterBy('checkbox', false).get('length');
+	}.property('@each.checkbox'),
+	
+	total: function(){
+		return this.get('length');
+	}.property('length'),
 })
